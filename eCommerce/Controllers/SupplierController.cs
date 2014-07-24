@@ -63,9 +63,10 @@ namespace eCommerce.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        public ActionResult Detail()
+        public ActionResult Detail(int id)
         {
-            return View();
+            Models.Supplier supplierDetail = db.Suppliers.Find(id);
+            return View(supplierDetail);
         }
     }
 }
