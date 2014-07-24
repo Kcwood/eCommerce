@@ -15,22 +15,52 @@ namespace eCommerce.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            return View(db.Suppliers.OrderBy(x=>x.Name));
         }
 
+        [HttpGet]
         public ActionResult Create()
         {
-            return View();
+            return View(new Models.Supplier());
         }
 
-        public ActionResult Delete()
+        [HttpPost]
+        public ActionResult Create(Models.Supplier supplier)
         {
-            return View();
+            db.Suppliers.Add(supplier);
+            db.SaveChanges();
+            return RedirectToAction("Index", "Home"); 
         }
 
-        public ActionResult Edit()
+        [HttpGet]
+        public ActionResult Delete(int id)
         {
-            return View();
+            Models.Supplier supplierToDelete = db.Suppliers.Find(id);
+            return View(supplierToDelete);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            Models.Supplier supplierToDelete = db.Suppliers.Find(id);
+            db.Suppliers.Remove(supplierToDelete);
+            db.SaveChanges();
+            return RedirectToAction("Index", "Home");
+        }
+
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            Models.Supplier supplierToEdit = db.Suppliers.Find(id);
+            return View(supplierToEdit);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(Models.Supplier supplierToEdit)
+        {
+            db.Entry(supplierToEdit).State = System.Data.EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("Index", "Home");
         }
 
         public ActionResult Detail()
