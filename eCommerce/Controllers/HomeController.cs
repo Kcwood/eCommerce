@@ -8,11 +8,13 @@ namespace eCommerce.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
-        {
-            ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
+        //db connection
+        Models.eCommerceEntities db = new Models.eCommerceEntities();
 
-            return View();
+        public ActionResult Index()
+        {   
+            //display all products 
+            return View(db.Products.OrderByDescending(x=>x.UnitPrice));
         }
 
         public ActionResult About()

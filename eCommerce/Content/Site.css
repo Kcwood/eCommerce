@@ -753,4 +753,50 @@ tr.pager td {
         footer p {
             margin: 0;
         }
+
+}
+.stuff {
+    border:solid;
+    float:right;
+    text-align:center;
+    border-width:thin;
+    width:200px;
+}
+.des {
+    border:solid;
+    float: left;
+    border-width:thin;
+    max-width:50%;
+   
+    
+}
+#name{
+    text-decoration:underline;
+    font-style:italic;
+}
+.header {
+    border:solid;
+    max-width:50%;
+    border-width:thin;
+     
+}
+#header {
+    text-decoration:underline;
+    font-style:italic;
+}
+
+.photoContainer{
+    display:inline-block;
+    float:right;
+    width:455px;
+}
+
+.photo {
+    border:solid;
+    display:inline-block;   
+}
+
+.thumbnail img{
+    display:inline-block;
+    max-height:100px;
 }
