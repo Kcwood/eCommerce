@@ -36,7 +36,7 @@
     <div class="photoContainer">
     <div class="photo">
       @if(Model.Images.Any()){
-           <img src="@Model.Images.First().ImageURL" />
+           <img class="photo" src="@Model.Images.First().ImageURL" />
       }
    </div>
         <br />
@@ -44,7 +44,7 @@
       @foreach (var image in Model.Images)
          {
              
-            <img src="@image.ImageURL" />
+            <img class="thumbnail" src="@image.ImageURL" />
             
          }
     </div>
@@ -68,13 +68,9 @@
         @Html.DisplayFor(model => model.ListPrice)
     </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.InStock)
-    </div>
-
-    <div class="display-field">
-        @Html.DisplayFor(model => model.InStock)
-    </div>
+    <form>
+        <input type="number" name="Qty" />
+    </form>
     <p>
 
     </p>

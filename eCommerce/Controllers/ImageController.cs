@@ -10,10 +10,12 @@ using System.IO;
 
 namespace eCommerce.Controllers
 {
-    public class ImageController : Controller
-    {
-        private eCommerceEntities db = new eCommerceEntities();
+    //limit access only to admin users
+    [Authorize(Roles = "admin")]
 
+    public class ImageController : BaseController
+    {
+       
         //
         // GET: /Image/
 

@@ -1,0 +1,9 @@
+﻿@model eCommerce.Models.Order
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Cart</h2>
+
+@Html.DisplayNameFor(model => model.Name) | <a href ="@Url.Action("Remove","Cart")">Remove</a>
