@@ -24,17 +24,31 @@ namespace eCommerce.Controllers
         }
 
         [HttpPost]
-        public ActionResult Add()
+        public ActionResult Add(Models.OrderLine ol)
         {
-            return PartialView(this.MyOrder);
+            if (this.MyOrder.OrderLines.Where(x => x.ProductID == ol.ProductID).Any())
+            {
+                var cartItem = this.MyOrder.OrderLines.Where(x => x.ProductID == ol.ProductID).First();
+                cartItem.Qty = cartItem.Qty + ol.Qty;
+            }
+            else
+            {
+                this.MyOrder.OrderLines.Add(ol);
+            }
+            db.SaveChanges();
+            return RedirectToAction("MiniCart", "Cart");
         }
 
         [HttpGet]
-        public ActionResult Remove(int id)
+        public ActionResult Delete(int id)
         {
-            Models.Product remove = db.Products.Find(id);
+            var toDelete = MyOrder.OrderLines.Where(x => x.ProductID == id).First();
+            db.OrderLines.Remove(toDelete);
+            db.SaveChanges();
             return RedirectToAction("Index", "Cart");
         }
+
+
 
     }
 }

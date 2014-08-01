@@ -30,5 +30,11 @@ namespace eCommerce.Controllers
             return View();
         }
 
+        //GET: /Home/Navigation
+        public ActionResult Navigation()
+        {
+            return PartialView(db.Categories.Where(x => x.ParentID == null));
+        }
+
     }
 }

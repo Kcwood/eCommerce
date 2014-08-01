@@ -1,14 +1,12 @@
 ﻿@model eCommerce.Models.Order
 
-<div>
-    Cart has @if (Model.OrderLines.Count() == 0)
-             {
-                 <span>0</span>
-             }
-    @Html.Display(Model.OrderLines.Count().ToString()) items in it. 
-    Total price: $@if (Model.Total == 0)
-                  {
-                      <span>0.00</span>
-                  } 
-    @Html.Display(Model.Total.ToString())
+<div class="cart">
+    <a href="@Url.Action("Index","Cart")">
+        <div class="cart-number">
+            @Model.OrderLines.Sum(x=>x.Qty)
+        </div>
+        <div class="cart-price">
+            @Model.OrderLines.Sum(x => x.Qty * x.UnitPrice).ToString("c");
+        </div>
+    </a>
 </div>

@@ -800,3 +800,7 @@ tr.pager td {
     display:inline-block;
     max-height:100px;
 }
+
+.MiniCart {
+    float: right;
+}
